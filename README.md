@@ -18,6 +18,8 @@ A free, no-account web tool that reads a Florida medical-cannabis Certificate of
 
 ---
 
+**The specification:** [`docs/specification/`](docs/specification/) holds the specification Sneferu built this from, copied word for word from its run record.
+
 ## The problem
 
 A patient stands at the dispensary counter holding a certificate full of milligrams per gram. The shelf says *indica*, the budtender says *hybrid*, and the paper in their hand says neither in words they can use. They don't want to hand their medical documents to an app that wants an email address first.
