@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}No placement — COA Effect-Spectrum Profiler{% endblock %}
+{% block description %}Your COA profile — placement, chemistry, confidence, and PDF download.{% endblock %}
+{% block body_class %}main-result{% endblock %}
+{% block content %}
+<h1>No placement could be calculated.</h1>
+
+<p class="completeness-badge completeness-refusal">No placement — insufficient readable data</p>
+
+<div class="alert alert-warn" role="alert">
+  <p class="alert-body">{{ refusal_reason }}</p>
+</div>
+
+{% include "_chemotype.html" %}
+
+{% include "_disclaimer.html" %}
+
+<nav class="actions" aria-label="Result actions">
+  <a href="/new" class="btn-primary">Upload a clearer photo or PDF</a>
+  <a href="/algorithm" class="btn-ghost">How is this calculated?</a>
+</nav>
+
+{% include "_freshness.html" %}
+{% endblock %}

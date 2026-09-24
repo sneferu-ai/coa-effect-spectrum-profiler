@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Your result (reduced confidence) — COA Effect-Spectrum Profiler{% endblock %}
+{% block description %}Your COA profile — placement, chemistry, confidence, and PDF download.{% endblock %}
+{% block body_class %}main-result{% endblock %}
+{% block content %}
+<h1>Your certificate's placement</h1>
+
+<p class="completeness-badge completeness-degraded">Degraded placement — reduced confidence</p>
+
+<div class="alert alert-warn" role="alert">
+  <p class="alert-title">This is a degraded placement</p>
+  <p class="alert-body">{{ degraded_notice }}</p>
+</div>
+
+{% include "_spectrum.html" %}
+
+{% include "_confidence.html" %}
+
+<section class="card rationale" aria-labelledby="rationale-heading">
+  <h2 id="rationale-heading">What drove this placement?</h2>
+  <ul class="rationale-list">
+    {% for item in rationale %}
+    <li>{{ item }}</li>
+    {% endfor %}
+  </ul>
+  {% if caryophyllene_present %}
+  <p class="monitored-note">β-Caryophyllene at {{ caryophyllene_value }} — {{ monitored_note }}.</p>
+  {% endif %}
+</section>
+
+{% include "_chemtable.html" %}
+
+<script type="application/json" id="result-data">{{ result_json | safe }}</script>
+
+{% include "_disclaimer.html" %}
+
+{% include "_actions.html" %}
+
+{% include "_freshness.html" %}
+
+{% include "_feedback.html" %}
+{% endblock %}
+{% block scripts %}
+<script src="/static/spectrum.js?v={{ static_version }}" defer></script>
+{% endblock %}

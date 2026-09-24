@@ -1,0 +1,26 @@
+<section class="card" aria-labelledby="chemotype-heading">
+  <h2 id="chemotype-heading">Chemotype summary</h2>
+  <table class="chem-table chemotype">
+    <thead>
+      <tr>
+        <th scope="col">Compound</th>
+        <th scope="col">Reported on COA</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for field in fields %}
+      <tr>
+        <th scope="row" data-label="Compound">{{ field.compound }}</th>
+        <td data-label="Reported on COA">{{ field.reported or '—' }}</td>
+        <td data-label="Status">
+          {% if field.status == 'verified' %}<span class="chip chip-verified">Verified</span>
+          {% elif field.status == 'derived' %}<span class="chip chip-derived">Derived</span>
+          {% elif field.status == 'unreadable' %}<span class="chip chip-unreadable">Unreadable</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>

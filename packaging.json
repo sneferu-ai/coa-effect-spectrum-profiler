@@ -1,0 +1,31 @@
+{
+  "product": "coa_effect_spectrum_profiler",
+  "version": "0.1.0",
+  "runtime_test_enabled": true,
+  "runtime_test_mode": "playwright",
+  "runtime_test_command": "bash -c 'PYTHONPATH=src SESSION_COOKIE_SECURE=false HEIC_ENABLED=false COA_PROFILER_TMP_DIR=/tmp/coa_rt_sessions python3 -m uvicorn coa_profiler.app:app --no-access-log --port {port}'",
+  "runtime_test_url": "http://127.0.0.1:{port}/",
+  "runtime_test_ready_url": "http://127.0.0.1:{port}/readyz",
+  "browser_smoke_plan": "test_plan.md",
+  "packaging": {
+    "format": "python-wheel",
+    "build_command": "python -m build",
+    "include": [
+      "src/coa_profiler/**",
+      "src/coa_profiler/web/templates/*.html",
+      "src/coa_profiler/web/static/*.css",
+      "src/coa_profiler/web/static/*.js",
+      "src/coa_profiler/web/static/*.png",
+      "src/coa_profiler/web/static/*.svg",
+      "docs/algorithm.md"
+    ],
+    "static_assets": [
+      "src/coa_profiler/web/static/style.css",
+      "src/coa_profiler/web/static/head-bootstrap.js",
+      "src/coa_profiler/web/static/spectrum.js",
+      "src/coa_profiler/web/static/preview-bootstrap.js",
+      "src/coa_profiler/web/static/brand-mark.png",
+      "src/coa_profiler/web/static/favicon.svg"
+    ]
+  }
+}

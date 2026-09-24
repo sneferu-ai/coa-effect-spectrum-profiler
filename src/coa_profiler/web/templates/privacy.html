@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Privacy — COA Effect-Spectrum Profiler{% endblock %}
+{% block description %}Privacy notice — no account, no storage, sessions expire in {{ ttl_minutes }} minutes.{% endblock %}
+{% block content %}
+<h1>Privacy notice</h1>
+
+<section>
+  <h2>What is processed</h2>
+  <p>The file you upload and the chemistry values extracted from it. The server creates an owner-only temporary working directory for the upload.</p>
+</section>
+
+<section>
+  <h2>What is never retained</h2>
+  <ul>
+    <li>Your original uploaded file — removed as soon as the metadata-scrubbed working copy is created.</li>
+    <li>The scrubbed working copy — held in an owner-only temporary directory and deleted when your session ends.</li>
+    <li>The parsed values and your result — kept only in memory, never written to a database.</li>
+    <li>IP-derived identities — see the access-log section below.</li>
+    <li>Accounts — there is no account, no registration, and no login on this service.</li>
+  </ul>
+  <p>No account, no durable storage of results, and no third-party tracking. Parsed values remain only in the server process for the short session; temporary working data is discarded when that session ends.</p>
+</section>
+
+<section>
+  <h2>External processing</h2>
+  {% if inference_assist_enabled %}
+  <p><strong>External inference is enabled for this deployment.</strong> When the deterministic parser cannot recognize a report layout, extracted document text may be sent to the operator-configured inference service to classify that layout. The service does not extract chemistry values. Upload only documents you are authorized to send to that service.</p>
+  {% else %}
+  <p>External inference is disabled for this deployment. Files, extracted document text, and chemistry values are not sent to an inference service.</p>
+  {% endif %}
+</section>
+
+<section>
+  <h2>The session</h2>
+  <p>Your result lives in a session that expires {{ ttl_minutes }} minutes after your upload. When it ends, the session is torn down automatically and the working copy of your file is deleted.</p>
+  <p>The only cookie is the functional session cookie: <code>HttpOnly</code>, <code>SameSite=Strict</code>{% if cookie_secure %}, <code>Secure</code>{% endif %}. No other cookies are set. The page never reads the cookie, and no result data appears in URLs.</p>
+</section>
+
+<section>
+  <h2>Photo metadata</h2>
+  <p>Image metadata (EXIF), including any location or device data, is stripped from photos on upload before anything else happens. HEIC photos are handled the same way through the HEIC decoder; when the decoder is unavailable, HEIC uploads are refused before processing rather than processed without stripping.</p>
+</section>
+
+<section>
+  <h2>Access logs</h2>
+  <p>Within the {{ ttl_minutes }}-minute session window, someone with access to server logs could correlate your IP address with a visit to the results page. By default, IP addresses in access logs are hashed using a daily rotating salt, reducing but not eliminating this correlation risk. Operators may configure logging to truncate or fully disable IP retention via the <code>LOG_IP_RETENTION</code> setting (current deployment: {{ log_ip_retention }}).</p>
+</section>
+
+<section>
+  <h2>Anonymous feedback</h2>
+  <p>If you choose to answer &ldquo;Was this helpful?&rdquo;, the only data recorded is derived and non-identifying: the placement number, the completeness state, and the lab report format. No IP address, no session token, and no chemistry values are attached.</p>
+</section>
+
+{% if contact_email %}<section>
+  <h2>Contact</h2>
+  <p>Questions about this notice: <span class="contact-email">{{ contact_email }}</span></p>
+</section>{% endif %}
+{% endblock %}

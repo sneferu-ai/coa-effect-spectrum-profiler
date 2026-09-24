@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coa_profiler"
+version = "0.1.0"
+description = "COA Effect-Spectrum Profiler: deterministic chemistry-to-spectrum placement for Florida OMMU certificates of analysis"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "LicenseRef-Proprietary"
+authors = [{ name = "COA Profiler Operator" }]
+dependencies = [
+    "fastapi>=0.141.1",
+    # Explicit floor covers current Starlette request parsing, StaticFiles,
+    # and Host-header advisories instead of relying on FastAPI's broad floor.
+    "starlette>=1.3.1",
+    "uvicorn>=0.29",
+    "gunicorn>=21.2",
+    # Spec-mandated primary PDF engines (FR-003, section 6):
+    "pdfplumber>=0.11",
+    "pdf2image>=1.17",
+    # PyMuPDF is the portability fallback used when pdfplumber/pdf2image are
+    # not installed (same text-layer + rasterization capability).
+    "PyMuPDF>=1.24",
+    "pytesseract>=0.3.10",
+    "Pillow>=10.0",
+    "pillow-heif>=0.14",
+    "opencv-python-headless>=4.8",
+    "reportlab>=4.0",
+    "jinja2>=3.1",
+    "pydantic>=2.6",
+    # Required by FastAPI/Starlette to parse multipart file uploads.  It is
+    # intentionally explicit: a clean production install must not depend on
+    # another package having pulled it in incidentally.
+    "python-multipart>=0.0.31",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "httpx>=0.27",
+    "ruff>=0.4",
+    "build>=1.0",
+    "pypdf>=5.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+coa_profiler = [
+    "web/templates/*.html",
+    "web/static/*.css",
+    "web/static/*.js",
+    "web/static/*.png",
+    "web/static/*.svg",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"

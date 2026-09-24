@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}COA Effect-Spectrum Profiler{% endblock %}
+{% block description %}Upload a Florida cannabis Certificate of Analysis and get a chemistry-derived placement on the sativa↔indica scale.{% endblock %}
+{% block after_skip %}
+<noscript>
+  <p class="noscript-notice">JavaScript is optional for this tool. Upload, results, and PDF download all work without it. Drag-and-drop file selection and the feedback feature require JavaScript.</p>
+</noscript>
+{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Read your Florida COA's chemistry on the sativa↔indica placement scale.</h1>
+  <p class="lede">Upload the Certificate of Analysis from your dispensary purchase. We extract the cannabinoids and terpenes, compute a 0–100 placement, and give you a PDF — no account, and working files are automatically deleted.</p>
+</section>
+
+{% if error %}
+<div class="alert" role="alert">
+  <p class="alert-title">{{ error.title }}</p>
+  <p class="alert-body">{{ error.message }}</p>
+  <p class="alert-recovery">{{ error.recovery }}</p>
+  <p class="alert-ref">Reference: {{ error.error_code }}</p>
+</div>
+{% endif %}
+
+<section class="card" aria-labelledby="upload-heading">
+  <h2 id="upload-heading">Upload your COA</h2>
+  <form class="upload-form" id="upload-form" method="post" action="/upload"
+        enctype="multipart/form-data" data-max-upload-bytes="{{ max_upload_bytes }}">
+    <label for="file" class="dropzone" id="dropzone">
+      <svg class="dropzone-icon" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <title>Upload</title>
+        <path d="M20 26 V12 M14 18 l6 -6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 30 a7 7 0 0 1 -1.2 -13.9 a9 9 0 0 1 17.4 -1.6 A6.4 6.4 0 0 1 30 30 Z"
+              fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+      </svg>
+      <span class="dropzone-text">Drop a PDF or photo here, or tap to choose a file.</span>
+      <span class="dropzone-sub">PDF, JPEG, PNG{% if heic_ready %}, HEIC{% endif %} · max {{ max_upload_mb }} MB</span>
+      <input class="sr-only" type="file" id="file" name="file" accept="{{ accept_extensions }}" required>
+    </label>
+    <p class="file-status" id="file-status" aria-live="polite"></p>
+    <button class="btn-primary" id="upload-submit" type="submit">Analyze my COA</button>
+    <p class="btn-helper is-visible" id="upload-helper">Select a file to continue</p>
+  </form>
+</section>
+
+<section class="privacy-commitment" aria-label="Privacy commitment">
+  <p>Your upload is scrubbed in a private temporary directory. The original is removed immediately; the working copy and result are deleted after {{ ttl_minutes }} minutes.</p>
+  <p>No account, no durable storage, no third-party tracking.</p>
+  {% if inference_assist_enabled %}<p class="alert-body"><strong>External inference is enabled:</strong> for an unrecognized report layout, extracted document text may be sent to the operator-configured inference service. Upload only documents you are authorized to send to that service.</p>{% endif %}
+  <p><a href="/privacy">Read the privacy notice</a></p>
+</section>
+
+<details class="what-is-coa" aria-expanded="false">
+  <summary>What is a Certificate of Analysis?</summary>
+  <p>A COA is the lab report that accompanies your medical cannabis product. It lists measured cannabinoids and terpenes. Dispensaries may label a product &ldquo;sativa,&rdquo; &ldquo;indica,&rdquo; or &ldquo;hybrid,&rdquo; but this tool reads the chemistry printed on the certificate instead.</p>
+</details>
+
+{% if contact_email %}<p class="contact-line">
+  <a href="mailto:{{ contact_email }}?subject={{ contact_subject | urlencode }}">Need help with batch processing for your practice? Contact us.</a><br>
+  <span class="contact-email">{{ contact_email }}</span>
+</p>{% endif %}
+
+<div class="loading-overlay" id="loading-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="overlay-title">
+  <div class="overlay-content">
+    <h2 id="overlay-title" class="overlay-title" tabindex="-1">Analyzing your COA…</h2>
+    <div class="overlay-spinner" aria-hidden="true"></div>
+    <p class="overlay-note">This takes 10–60 seconds. Do not close this window.</p>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/spectrum.js?v={{ static_version }}" defer></script>
+{% endblock %}

@@ -1,0 +1,738 @@
+{
+  "eval_01": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.285
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.475
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 0.95
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.76
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.152
+      },
+      "terpinolene": {
+        "unit": "%",
+        "value": 0.152
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 19.0
+      }
+    },
+    "lab_format": "sc_labs"
+  },
+  "eval_02": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.3
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.5
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 1.0
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.8
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.16
+      },
+      "terpinolene": {
+        "unit": "%",
+        "value": 0.16
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 20.0
+      }
+    },
+    "lab_format": "generic_ommu"
+  },
+  "eval_03": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.315
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.525
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 1.05
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.84
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.168
+      },
+      "terpinolene": {
+        "unit": "%",
+        "value": 0.168
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 21.0
+      }
+    },
+    "lab_format": "confident_cannabis"
+  },
+  "eval_04": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.27
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.45
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 0.9
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.72
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.144
+      },
+      "terpinolene": {
+        "unit": "%",
+        "value": 0.144
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 18.0
+      }
+    },
+    "lab_format": "sc_labs"
+  },
+  "eval_05": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.19
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.38
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 0.95
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.475
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.048
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.152
+      },
+      "terpinolene": {
+        "unit": "%",
+        "value": 0.152
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 19.0
+      }
+    },
+    "lab_format": "generic_ommu"
+  },
+  "eval_06": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.2
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.4
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 1.0
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.5
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.05
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.16
+      },
+      "terpinolene": {
+        "unit": "%",
+        "value": 0.16
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 20.0
+      }
+    },
+    "lab_format": "confident_cannabis"
+  },
+  "eval_07": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.21
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.42
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 1.05
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.525
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.053
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.168
+      },
+      "terpinolene": {
+        "unit": "%",
+        "value": 0.168
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 21.0
+      }
+    },
+    "lab_format": "sc_labs"
+  },
+  "eval_08": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.18
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.36
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 0.9
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.45
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.045
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.144
+      },
+      "terpinolene": {
+        "unit": "%",
+        "value": 0.144
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 18.0
+      }
+    },
+    "lab_format": "generic_ommu"
+  },
+  "eval_09": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.19
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.38
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 0.95
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.475
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.048
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.152
+      },
+      "terpinolene": {
+        "unit": "%",
+        "value": 0.152
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 19.0
+      }
+    },
+    "lab_format": "confident_cannabis"
+  },
+  "eval_10": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.15
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.5
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 1.0
+      },
+      "humulene": {
+        "unit": "%",
+        "value": 0.078
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.3
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.1
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.16
+      },
+      "terpinolene": {
+        "unit": "%",
+        "value": 0.16
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 20.0
+      }
+    },
+    "lab_format": "sc_labs"
+  },
+  "eval_11": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.158
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.525
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 1.05
+      },
+      "humulene": {
+        "unit": "%",
+        "value": 0.082
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.315
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.105
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.168
+      },
+      "terpinolene": {
+        "unit": "%",
+        "value": 0.168
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 21.0
+      }
+    },
+    "lab_format": "generic_ommu"
+  },
+  "eval_12": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.135
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.45
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 0.9
+      },
+      "humulene": {
+        "unit": "%",
+        "value": 0.07
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.27
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.09
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.144
+      },
+      "terpinolene": {
+        "unit": "%",
+        "value": 0.144
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 18.0
+      }
+    },
+    "lab_format": "confident_cannabis"
+  },
+  "eval_13": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.095
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.665
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 0.95
+      },
+      "humulene": {
+        "unit": "%",
+        "value": 0.074
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.285
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.095
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.19
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 19.0
+      }
+    },
+    "lab_format": "sc_labs"
+  },
+  "eval_14": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.1
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.7
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 1.0
+      },
+      "humulene": {
+        "unit": "%",
+        "value": 0.078
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.3
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.1
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.2
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 20.0
+      }
+    },
+    "lab_format": "generic_ommu"
+  },
+  "eval_15": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.105
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.735
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 1.05
+      },
+      "humulene": {
+        "unit": "%",
+        "value": 0.082
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.315
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.105
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.21
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 21.0
+      }
+    },
+    "lab_format": "confident_cannabis"
+  },
+  "eval_16": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.09
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.63
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 0.9
+      },
+      "humulene": {
+        "unit": "%",
+        "value": 0.07
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.27
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.09
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.18
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 18.0
+      }
+    },
+    "lab_format": "sc_labs"
+  },
+  "eval_17": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.095
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.665
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 0.95
+      },
+      "humulene": {
+        "unit": "%",
+        "value": 0.074
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.285
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.095
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.19
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 19.0
+      }
+    },
+    "lab_format": "generic_ommu"
+  },
+  "eval_18": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.1
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.9
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 1.0
+      },
+      "humulene": {
+        "unit": "%",
+        "value": 0.059
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.25
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.15
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.5
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 20.0
+      }
+    },
+    "lab_format": "confident_cannabis"
+  },
+  "eval_19": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.105
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.945
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 1.05
+      },
+      "humulene": {
+        "unit": "%",
+        "value": 0.062
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.263
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.158
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.525
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 21.0
+      }
+    },
+    "lab_format": "sc_labs"
+  },
+  "eval_20": {
+    "fields": {
+      "alpha_pinene": {
+        "unit": "%",
+        "value": 0.09
+      },
+      "beta_caryophyllene": {
+        "unit": "%",
+        "value": 0.81
+      },
+      "cbd_total": {
+        "unit": "%",
+        "value": 0.9
+      },
+      "humulene": {
+        "unit": "%",
+        "value": 0.053
+      },
+      "limonene": {
+        "unit": "%",
+        "value": 0.225
+      },
+      "linalool": {
+        "unit": "%",
+        "value": 0.135
+      },
+      "myrcene": {
+        "unit": "%",
+        "value": 0.45
+      },
+      "thc_total": {
+        "unit": "%",
+        "value": 18.0
+      }
+    },
+    "lab_format": "generic_ommu"
+  }
+}

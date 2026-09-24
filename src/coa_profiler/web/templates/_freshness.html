@@ -1,0 +1,6 @@
+<p class="freshness">This result is available for {{ ttl_minutes }} minutes. Save the PDF to keep it.</p>
+{% if ttl_expiring_soon %}
+<div class="alert alert-warn" role="alert">
+  <p class="alert-body">Your session will expire soon — save the PDF now.</p>
+</div>
+{% endif %}

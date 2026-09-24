@@ -1,0 +1,52 @@
+{% macro chem_row(field) %}
+<tr {% if field.plausibility_flag %}data-plausibility="true"{% endif %}>
+  <th scope="row" data-label="Compound">{{ field.compound }}</th>
+  <td data-label="Reported on COA">{{ field.reported or '—' }}</td>
+  <td data-label="Normalized" class="data">{{ field.normalized or '—' }}</td>
+  <td data-label="Status">
+    {% if field.status == 'verified' %}<span class="chip chip-verified">Verified</span>
+    {% elif field.status == 'derived' %}<span class="chip chip-derived">Derived</span>
+    {% elif field.status == 'unreadable' %}<span class="chip chip-unreadable">Unreadable</span>
+    {% endif %}
+    {% if field.not_used_in_placement %}<span class="chip chip-unused">Not used in placement</span>{% endif %}
+    {% if field.plausibility_flag %}<span class="chip chip-plausibility" data-plausibility="true">⚠ Exceeds typical range</span>{% endif %}
+  </td>
+  <td data-label="Details">
+    {% if field.source_span %}
+    <details class="source-span" aria-expanded="false">
+      <summary>Show source text</summary>
+      <pre class="source-pre"><code>{{ field.source_span }}</code></pre>
+    </details>
+    {% endif %}
+    {% if field.derived_note %}<p class="derived-note">derived — {{ field.derived_note }}</p>{% endif %}
+    {% if field.unreadable_reason %}<p class="unreadable-reason">{{ field.unreadable_reason }}</p>{% endif %}
+    {% if field.conflicting_note %}<p class="conflicting-note">{{ field.conflicting_note }}</p>{% endif %}
+    {% if field.plausibility_flag %}<p class="plausibility-note">Value exceeds the expected range — it may be a misread. The flag is shown, not hidden; judge the source span above.</p>{% endif %}
+  </td>
+</tr>
+{% endmacro %}
+
+<section class="card" aria-labelledby="chemistry-heading">
+  <h2 id="chemistry-heading">Values from your certificate</h2>
+  <table class="chem-table">
+    <thead>
+      <tr>
+        <th scope="col">Compound</th>
+        <th scope="col">Reported on COA</th>
+        <th scope="col">Normalized</th>
+        <th scope="col">Status</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><th colspan="5" scope="colgroup">Cannabinoids</th></tr>
+      {% for field in fields if field.category == 'cannabinoid' %}
+      {{ chem_row(field) }}
+      {% endfor %}
+      <tr><th colspan="5" scope="colgroup">Terpenes</th></tr>
+      {% for field in fields if field.category == 'terpene' %}
+      {{ chem_row(field) }}
+      {% endfor %}
+    </tbody>
+  </table>
+</section>

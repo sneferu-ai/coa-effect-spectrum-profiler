@@ -1,0 +1,22 @@
+services:
+  coa_profiler:
+    build:
+      context: .
+      args:
+        COA_PROFILER_VERSION: "${COA_PROFILER_VERSION:?Set a release-unique COA_PROFILER_VERSION}"
+    image: coa_profiler:latest
+    ports:
+      - "127.0.0.1:8080:8080"
+    env_file: .env
+    environment:
+      # Nginx reaches the container through a platform-specific Docker bridge
+      # address. Trust forwarded headers from that peer because the only
+      # published socket remains loopback-only; do not widen the port binding.
+      FORWARDED_ALLOW_IPS: "${FORWARDED_ALLOW_IPS:-*}"
+      # Keep runtime provenance and immutable static cache keys identical to
+      # the required build identifier.
+      COA_PROFILER_VERSION: "${COA_PROFILER_VERSION:?Set a release-unique COA_PROFILER_VERSION}"
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:size=512m,mode=1777

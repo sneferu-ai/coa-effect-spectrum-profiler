@@ -1,0 +1,27 @@
+{
+  "lab_format": "confident_cannabis",
+  "score": 95,
+  "placement_bin": "strongly-indica",
+  "fields": {
+    "thc_total": {
+      "value": 18.2,
+      "unit": "%"
+    },
+    "cbd_total": {
+      "value": 0.5,
+      "unit": "%"
+    },
+    "myrcene": {
+      "value": 0.85,
+      "unit": "%"
+    },
+    "limonene": {
+      "value": 0.42,
+      "unit": "%"
+    },
+    "beta_caryophyllene": {
+      "value": 0.66,
+      "unit": "%"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<figure class="spectrum">
+  <div class="spectrum-bar" role="img" aria-hidden="true">
+    <span class="band" style="left:{{ band_left_pct }}%;width:{{ band_width_pct }}%"></span>
+    <span class="marker" style="left:{{ marker_pct }}%"></span>
+  </div>
+  <div class="ends" aria-hidden="true">
+    <span class="end-sat">0 — sativa-leaning</span>
+    <span class="end-mid">50</span>
+    <span class="end-ind">100 — indica-leaning</span>
+  </div>
+  <figcaption>
+    <p class="placement">Placement: {{ score }} of 100 — {{ label }}</p>
+    <p class="band-range">uncertainty band: {{ band_low }}&ndash;{{ band_high }}</p>
+    <p class="note">{{ band_note }}</p>
+  </figcaption>
+</figure>

@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block title %}How it works — COA Effect-Spectrum Profiler{% endblock %}
+{% block description %}How the COA Effect-Spectrum Profiler computes its placement — weights, formulas, and citations.{% endblock %}
+{% block body_class %}main-algorithm{% endblock %}
+{% block content %}
+<div class="prose">
+<h1>How the placement is calculated.</h1>
+
+<p>The placement is a chemistry-derived tendency score, not an effect prediction or medical advice. The sativa↔indica taxonomy is scientifically contested; this tool uses it as a familiar communication framework, not a validated clinical taxonomy. The weights below are literature-derived hypotheses with clinical-informed directional assignments, not clinically validated truth.</p>
+
+<section aria-labelledby="active-heading">
+  <h2 id="active-heading">Active directional compounds</h2>
+  <table class="weights-table">
+    <thead>
+      <tr><th scope="col">Compound</th><th scope="col">Direction</th><th scope="col">Weight</th><th scope="col">Reference max</th><th scope="col">Citation</th></tr>
+    </thead>
+    <tbody>
+      {% for row in active_rows %}
+      <tr>
+        <th scope="row">{{ row.display }}</th>
+        <td>{{ row.direction }}{% if row.note %} ({{ row.note }}){% endif %}</td>
+        <td class="data">{{ row.weight }}</td>
+        <td class="data">{% if row.reference_max is not none %}{{ row.reference_max }}%{% else %}—{% endif %}</td>
+        <td>{{ row.citation }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section aria-labelledby="monitored-heading">
+  <h2 id="monitored-heading">Monitored but not scored</h2>
+  <p>These compounds are extracted and displayed, but their direction is held neutral with a weight of 0.0 — monitored pending better literature support.</p>
+  <table class="weights-table">
+    <thead>
+      <tr><th scope="col">Compound</th><th scope="col">Direction</th><th scope="col">Weight</th><th scope="col">Note</th></tr>
+    </thead>
+    <tbody>
+      {% for row in monitored_rows %}
+      <tr>
+        <th scope="row">{{ row.display }}</th>
+        <td>{{ row.direction }}</td>
+        <td class="data">{{ row.weight }}</td>
+        <td>{{ row.note }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section aria-labelledby="selection-heading">
+  <h2 id="selection-heading">Weight selection criteria</h2>
+  <p>Terpenes were selected based on three criteria: (a) frequency of appearance on Florida OMMU-mandated COAs, (b) availability of published directional literature in Russo 2011, McPartland &amp; Russo 2001, Russo &amp; Marcu 2017, or Gertsch et al. 2008, and (c) coverage across at least two independent sources. Reference maxima are operator-informed estimates based on typical Florida COA ranges observed in clinical practice, not statistical maxima. They are tuning parameters subject to validation.</p>
+  {% if omitted_terpenes %}
+  <p>Omitted terpenes and their exclusion reasons:</p>
+  <ul>
+    {% for item in omitted_terpenes %}
+    <li>{{ item.compound }} — {{ item.reason }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</section>
+
+<section aria-labelledby="normalization-heading">
+  <h2 id="normalization-heading">Normalization rules</h2>
+  <p>All values are normalized to a common percentage scale:</p>
+  <ul>
+    <li><code>%</code> — used directly</li>
+    <li><code>mg/g</code> — multiplied by 0.1 (18.2 mg/g becomes 1.82%)</li>
+    <li><code>mg/mL</code> — multiplied by 0.1 (assuming density ≈ 1 g/mL)</li>
+    <li><code>ppm</code> — multiplied by 0.0001</li>
+  </ul>
+  <p>If a COA reports THCA and delta-9 THC separately but no Total THC line, the parser derives <code>Total THC = delta-9 THC + 0.877 × THCA</code>, and likewise <code>Total CBD = CBD + 0.877 × CBDA</code>. The 0.877 factor accounts for decarboxylation molecular weight loss. Derived values are marked derived and displayed with a note.</p>
+</section>
+
+<section aria-labelledby="steps-heading">
+  <h2 id="steps-heading">The five scoring steps</h2>
+  <ol>
+    <li><strong>Normalize units</strong> — convert every reported value to percentage using the unit rules above and mark derived values. Values are not capped at a reference maximum.</li>
+    <li><strong>Weight signed contributions</strong> — for each verified scored compound <code>i</code>: <span class="formula">contribution_i = (normalized_value_i / reference_max_i) × weight_i × direction_i</span>, where direction is +1 for indica and −1 for sativa. Missing compounds contribute 0.</li>
+    <li><strong>Compute the raw score</strong> — <span class="formula">raw_score = 50 + Σ(contribution_i) × 50</span>. A signed sum of zero is a valid midpoint score of 50, including when readable compounds are neutral or report zero.</li>
+    <li><strong>Contract toward the midpoint</strong> — <span class="formula">contracted = 50 + (raw_score − 50) × U</span>, where <code>U</code> is 0.85 for a full placement and 0.70 for degraded mode. This reflects model uncertainty; it is not a statistical confidence interval.</li>
+    <li><strong>Round and clamp</strong> — round <code>contracted</code> to the nearest multiple of 5, with exact half-step ties toward zero, then clamp to [0, 100].</li>
+  </ol>
+</section>
+
+<section aria-labelledby="band-heading">
+  <h2 id="band-heading">The uncertainty band</h2>
+  <p><span class="formula">band_half_width = round_to_5((1 − confidence_combined) × 20)</span>, clamped to [5, 20]; <span class="formula">band_low = max(0, display_score − band_half_width)</span>; <span class="formula">band_high = min(100, display_score + band_half_width)</span>. The band is symmetric around the placement except where it meets the 0 or 100 endpoint, and reflects combined confidence rather than measurement precision.</p>
+</section>
+
+<section aria-labelledby="confidence-heading">
+  <h2 id="confidence-heading">The two-component confidence figure</h2>
+  <ul>
+    <li>Data completeness uses the exact formula <span class="formula">DC = max(0, 1.0 − 0.15 × min(2, unreadable expected cannabinoids) − 0.10 × min(5, unreadable reported terpenes) − 0.20 × [readable terpenes &lt; 5] − 0.15 × [OCR mean confidence in [60, 75)] − 0.30 × [degraded mode])</span>. The expected cannabinoids are THC-total and CBD-total; missing expected fields and reported terpene rows that could not be read count as unreadable.</li>
+    <li>Model confidence: <span class="formula">MC = {{ (model_confidence * 100) | round | int }}%</span> at launch — a fixed value reflecting the literature-derived, non-clinically-validated nature of the weights.</li>
+    <li>Combined: <span class="formula">CC = DC × MC</span>; DC and MC are fractions from 0 to 1 and are displayed as percentages.</li>
+    <li>Confidence floor: 25% — below this, placement is refused even in degraded mode.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="degradation-heading">
+  <h2 id="degradation-heading">Degradation rules</h2>
+  <table class="weights-table">
+    <thead>
+      <tr><th scope="col">Outcome</th><th scope="col">Applies when</th><th scope="col">Output</th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Full placement</th><td>≥1 cannabinoid verified AND ≥3 terpenes verified AND ≥60% of reported terpenes readable</td><td>Full spectrum with confidence</td></tr>
+      <tr><th scope="row">Degraded placement</th><td>Cannabinoids verified but terpene data insufficient; CC ≥ 25%</td><td>Cannabinoid-weighted placement with reduced confidence and notice</td></tr>
+      <tr><th scope="row">Refusal</th><td>Zero terpenes readable; no THC-total/CBD-total anchor readable; forced plausibility refusal; or degraded CC &lt; 25%</td><td>No placement; chemotype summary only</td></tr>
+      <tr><th scope="row">Complete refusal</th><td>Zero chemistry fields readable</td><td>Typed error</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section aria-labelledby="plausibility-heading">
+  <h2 id="plausibility-heading">Plausibility checks</h2>
+  <p>THC-total above 40%, CBD-total above 25%, any single terpene above 10%, and any negative cannabinoid value are flagged with a warning marker. Flagged values are shown, not removed: you can see the flag and judge whether the value is a misread.</p>
+</section>
+
+<section aria-labelledby="determinism-heading">
+  <h2 id="determinism-heading">Determinism guarantee</h2>
+  <p>Byte-identical PDF output is guaranteed when <code>INFERENCE_ASSIST_ENABLED=false</code>, on the same Docker image digest and machine architecture. OCR determinism is enforced via Tesseract <code>--psm 6</code> and <code>OMP_THREAD_LIMIT=1</code>. The scorer version is the git tag at build time. The weights-file hash is the SHA-256 of the weights module. No generation timestamp is embedded in the PDF.</p>
+  <p class="version-line">Scorer version {{ version }} · weights hash {{ weights_hash }}</p>
+</section>
+
+<section aria-labelledby="citations-heading">
+  <h2 id="citations-heading">Citations</h2>
+  <ul class="citations">
+    {% for name, c in citations.items() %}
+    <li>{{ name }}. {{ c.title }}. {{ c.venue }}.{% if c.doi %} doi:{{ c.doi }}{% endif %}</li>
+    {% endfor %}
+  </ul>
+  <p>If the scoring weights change in a future version, results from prior versions may differ. The scorer version and weights-file hash printed on your PDF identify which version produced your result. This page always shows the current weights.</p>
+</section>
+
+{% include "_disclaimer.html" %}
+</div>
+{% endblock %}

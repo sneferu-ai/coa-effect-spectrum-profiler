@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} — COA Effect-Spectrum Profiler{% endblock %}
+{% block body_class %}main-error{% endblock %}
+{% block content %}
+<section class="error-card">
+  <div class="alert" role="alert">
+    <h1 class="alert-title">{{ title }}</h1>
+    <p class="alert-body">{{ message }}</p>
+    <p class="alert-recovery">{{ recovery }}</p>
+    {% if retry_after %}
+    <p class="alert-recovery">Wait {{ retry_after }} seconds before trying again.</p>
+    {% endif %}
+    <p class="alert-ref">Reference: {{ error_code }}</p>
+  </div>
+  <p><a class="btn-primary" href="/">Back to upload</a></p>
+</section>
+{% endblock %}

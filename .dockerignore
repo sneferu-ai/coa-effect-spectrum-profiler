@@ -1,0 +1,10 @@
+# Production builds use an allowlist.  In particular, local .env files,
+# VCS metadata, caches, virtualenvs, tests, and held-out operator data can
+# never enter the build context through a broad COPY added later.
+**
+!Dockerfile
+!pyproject.toml
+!README.md
+!constraints-runtime.txt
+!src/
+!src/**

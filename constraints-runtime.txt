@@ -1,0 +1,20 @@
+# Audited direct-dependency constraints for the production image.
+#
+# This intentionally pins the project's direct runtime dependencies while
+# leaving platform-selected transitives (for example manylinux wheel support)
+# to pip.  Refresh deliberately in a tested environment and review advisories.
+fastapi==0.141.1
+starlette==1.6.0
+python-multipart==0.0.32
+uvicorn==0.52.1
+gunicorn==26.0.0
+pdfplumber==0.11.10
+pdf2image==1.17.0
+PyMuPDF==1.28.2
+pytesseract==0.3.13
+Pillow==12.3.0
+pillow-heif==1.5.0
+opencv-python-headless==5.0.0.93
+reportlab==5.0.0
+jinja2==3.1.6
+pydantic==2.13.4

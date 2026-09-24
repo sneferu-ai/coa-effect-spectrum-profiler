@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="/static/head-bootstrap.js?v={{ static_version }}"></script>
+  <title>{% block title %}COA Effect-Spectrum Profiler{% endblock %}</title>
+  <meta name="description" content="{% block description %}Upload a Florida cannabis Certificate of Analysis and get a chemistry-derived placement on the sativa↔indica scale.{% endblock %}">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css?v={{ static_version }}">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  {% block after_skip %}{% endblock %}
+  <header class="header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="wordmark" aria-label="COA Profiler — home">
+        <svg class="wordmark-glyph" width="24" height="14" viewBox="0 0 24 14" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="wm-grad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" style="stop-color:var(--sativa)"/>
+              <stop offset="0.5" style="stop-color:var(--mid)"/>
+              <stop offset="1" style="stop-color:var(--indica)"/>
+            </linearGradient>
+          </defs>
+          <rect x="0.5" y="2.5" width="23" height="9" rx="4.5" fill="url(#wm-grad)" style="stroke:var(--rule)"/>
+          <rect x="13.5" y="0.5" width="2.5" height="13" style="fill:var(--fg)"/>
+        </svg>
+        COA Profiler
+      </a>
+      <nav class="header-nav" aria-label="Site navigation">
+        <a href="/algorithm">How it works</a>
+        <a href="/privacy">Privacy</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" role="main" class="main {% block body_class %}{% endblock %}">
+    <div class="main-inner">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+  <footer class="footer" role="contentinfo">
+    <div class="footer-links">
+      <a href="/privacy">Privacy</a> ·
+      <a href="/algorithm">How the scoring works</a>{% if contact_email %} ·
+      <span class="contact-email">{{ contact_email }}</span>{% endif %}
+    </div>
+    <div class="footer-brand">
+      <div class="footer-brand-inner">
+        <img src="/static/brand-mark.png" alt="" width="40" height="40">
+        <div>
+          <p class="brand-line">Free public tool — no account, no durable profile.</p>
+          <p class="brand-fine">Every value traces to your certificate's text. The scoring method is public.</p>
+        </div>
+      </div>
+    </div>
+    <p class="print-url">See the scoring method at coa-profiler.org/algorithm</p>
+  </footer>
+  <script src="/static/preview-bootstrap.js?v={{ static_version }}" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,152 @@
+{
+  "provenance": {
+    "kind": "synthetic-self-consistency",
+    "generated_by": "scripts/make_fixtures.py",
+    "labels_created_without_tool_output": false,
+    "documents_are_deidentified": false,
+    "rater": "",
+    "purpose": "test evaluation calculations; never release qualification"
+  },
+  "ratings": [
+    {
+      "fixture_id": "eval_01",
+      "drs_rating": "strongly-sativa",
+      "second_rater_rating": "strongly-sativa",
+      "dispensary_label": "sativa",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_02",
+      "drs_rating": "strongly-sativa",
+      "second_rater_rating": "strongly-sativa",
+      "dispensary_label": "sativa",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_03",
+      "drs_rating": "strongly-sativa",
+      "second_rater_rating": "strongly-sativa",
+      "dispensary_label": "indica",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_04",
+      "drs_rating": "strongly-sativa",
+      "second_rater_rating": "strongly-sativa",
+      "dispensary_label": "sativa",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_05",
+      "drs_rating": "sativa",
+      "second_rater_rating": "sativa",
+      "dispensary_label": "sativa",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_06",
+      "drs_rating": "sativa",
+      "second_rater_rating": "sativa",
+      "dispensary_label": "sativa",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_07",
+      "drs_rating": "sativa",
+      "second_rater_rating": "indica",
+      "dispensary_label": "sativa",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_08",
+      "drs_rating": "sativa",
+      "second_rater_rating": "sativa",
+      "dispensary_label": "indica",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_09",
+      "drs_rating": "sativa",
+      "second_rater_rating": "sativa",
+      "dispensary_label": "sativa",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_10",
+      "drs_rating": "balanced",
+      "second_rater_rating": "balanced",
+      "dispensary_label": "hybrid",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_11",
+      "drs_rating": "balanced",
+      "second_rater_rating": "balanced",
+      "dispensary_label": "hybrid",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_12",
+      "drs_rating": "balanced",
+      "second_rater_rating": "balanced",
+      "dispensary_label": "hybrid",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_13",
+      "drs_rating": "indica",
+      "second_rater_rating": "indica",
+      "dispensary_label": "indica",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_14",
+      "drs_rating": "indica",
+      "second_rater_rating": "indica",
+      "dispensary_label": "sativa",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_15",
+      "drs_rating": "indica",
+      "second_rater_rating": "indica",
+      "dispensary_label": "indica",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_16",
+      "drs_rating": "indica",
+      "second_rater_rating": "indica",
+      "dispensary_label": "indica",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_17",
+      "drs_rating": "indica",
+      "second_rater_rating": "indica",
+      "dispensary_label": "indica",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_18",
+      "drs_rating": "strongly-indica",
+      "second_rater_rating": "strongly-indica",
+      "dispensary_label": "indica",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_19",
+      "drs_rating": "strongly-indica",
+      "second_rater_rating": "strongly-indica",
+      "dispensary_label": "indica",
+      "notes": "fixture-generated"
+    },
+    {
+      "fixture_id": "eval_20",
+      "drs_rating": "strongly-indica",
+      "second_rater_rating": "strongly-indica",
+      "dispensary_label": "indica",
+      "notes": "fixture-generated"
+    }
+  ]
+}
