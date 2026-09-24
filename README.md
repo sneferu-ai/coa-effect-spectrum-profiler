@@ -1,6 +1,7 @@
 <div align="center">
+<img width="155" height="40" alt="image" src="https://github.com/user-attachments/assets/bdf4ff36-ef25-4881-89f4-9bc79e6b85dd" />
 
-# COA Effect-Spectrum Profiler
+## COA Effect-Spectrum Profiler
 
 **Your cannabis lab report, finally readable.**
 
